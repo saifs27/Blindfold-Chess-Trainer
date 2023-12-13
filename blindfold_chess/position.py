@@ -16,13 +16,18 @@ class Position:
             return "en passant is legal\n"
         return ''
     
+    def is_pawn(self, str):
+        if str == 'P' or str == 'p':
+            return ""
+        return str
+    
     def black_pieces(self):
         Black = ['p','r','n','b','q','k']
-        return [str(piece[0].upper()) + str(piece[1]) for piece in self.pieces if (piece in Black)]
+        return [self.is_pawn(str(piece[0].upper())) + str(piece[1]) for piece in self.pieces if (piece[0] in Black)]
     
     def white_pieces(self):
         White = ['P','R','N','B','Q','K']
-        return [str(piece[0]) + str(piece[1]) for piece in self.pieces if (piece in White)]
+        return [self.is_pawn(str(piece[0])) + str(piece[1]) for piece in self.pieces if (piece[0] in White)]
     
     def print_position(self):
         print(self.turn())
@@ -30,15 +35,17 @@ class Position:
         
         white = self.white_pieces()
         black = self.black_pieces()
-        print("White")
+        print("White: ")
         for piece in white:    
-            print(piece),
+            print(piece, end=" ")
+        
+        print("")
 
-        print("\nBlack")    
+        print("\nBlack: ")    
         for piece in black:
-            print(piece),
-            
-        print("\n")
+            print(piece, end=" ")
+        
+        return ""
         
         
 
