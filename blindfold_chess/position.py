@@ -23,11 +23,11 @@ class Position:
     
     def black_pieces(self):
         Black = ['p','r','n','b','q','k']
-        return [self.is_pawn(str(piece[0].upper())) + str(piece[1]) for piece in self.pieces if (piece[0] in Black)]
+        return [self.is_pawn(piece[0].upper()) + str(piece[1]) for piece in self.pieces if (piece[0] in Black)]
     
     def white_pieces(self):
         White = ['P','R','N','B','Q','K']
-        return [self.is_pawn(str(piece[0])) + str(piece[1]) for piece in self.pieces if (piece[0] in White)]
+        return [self.is_pawn(piece[0]) + str(piece[1]) for piece in self.pieces if (piece[0] in White)]
     
     def print_position(self):
         print(self.turn())
